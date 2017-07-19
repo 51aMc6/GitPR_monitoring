@@ -25,47 +25,22 @@ class PullReqTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchGithubRepos()
-        self.tableView.reloadData()
-    }
-    
-    @IBAction func refreashPRlist(_ sender: UIBarButtonItem) {
-        fetchGithubRepos()
-        self.tableView.reloadData()
-    }
-    
-    func fetchGithubRepos() {
-        let req : URLRequest = URLRequest(url: URL(string: "https://api.github.com/repos/magicalpanda/MagicalRecord/pulls")! as URL)
-        let dataTask = URLSession.shared.dataTask(with: req as URLRequest) { data, response, error in
-            if error != nil {
-                return
-            }
-            if response != nil {
-                print("Response: \(response)")
-                do {
-                    let theJson = try JSONSerialization.jsonObject(with: data!, options: []) as? [[String:AnyObject]]
-                    print("Result: OK")
-                    if theJson != nil {
-                        self.pullReqData = theJson!
-                        DispatchQueue.main.async {
-                            print("res: \(self.pullReqData)")
-                            self.tableView.reloadData()
-                        }
-                    }
-                } catch {
-                    print ("ErrorJson: \(error)")
-                }
-                
-            }
-        }
-        dataTask.resume()
         
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Refreash Table Data from remote API - rightButtonBarItem
+    @IBAction func refreashPRlist(_ sender: UIBarButtonItem) {
+        NetworkServices.fetchGithubRepos(with: nil, callback:{ payload in
+            self.pullReqData = payload
+            self.tableView.reloadData()
+        })
+        let ip = IndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: ip, at: .top, animated: false)
     }
 
     // MARK: - Table view data source
@@ -100,43 +75,29 @@ class PullReqTableViewController: UITableViewController {
         
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: - Table view delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("pressed")
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 25))
+        sectionView.backgroundColor = UIColor.darkGray
+        let sectionLabel = UILabel(frame: CGRect(x: 5, y: 2, width: sectionView.bounds.size.width, height: 20))
+        sectionLabel.textColor = UIColor.white
+        sectionLabel.text = "/magicalpanda/MagicalRecord/"
+        sectionLabel.adjustsFontSizeToFitWidth = true
+        sectionView.addSubview(sectionLabel)
+        
+        return sectionView
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 
@@ -147,6 +108,7 @@ class PullReqTableViewController: UITableViewController {
     }
     */
     
+    // MARK: - Date Formatter
     func dateFormatter(strDate : String)-> String {
         var dateStr = ""
         let formatter = DateFormatter()

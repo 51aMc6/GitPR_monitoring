@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8233A7831F1FE67E00A4D3C5 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8233A7821F1FE67E00A4D3C5 /* NetworkServices.swift */; };
 		82E9C16E1F1E85E700A8D277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E9C16D1F1E85E700A8D277 /* AppDelegate.swift */; };
 		82E9C1731F1E85E800A8D277 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82E9C1711F1E85E800A8D277 /* Main.storyboard */; };
 		82E9C1751F1E85E800A8D277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9C1741F1E85E800A8D277 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8233A7821F1FE67E00A4D3C5 /* NetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		82E9C16A1F1E85E700A8D277 /* GitPullRequestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitPullRequestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E9C16D1F1E85E700A8D277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E9C1721F1E85E800A8D277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				82E9C16D1F1E85E700A8D277 /* AppDelegate.swift */,
+				8233A7821F1FE67E00A4D3C5 /* NetworkServices.swift */,
 				82E9C17F1F1EA4B100A8D277 /* PullReqTableViewController.swift */,
 				82E9C1711F1E85E800A8D277 /* Main.storyboard */,
 				82E9C1741F1E85E800A8D277 /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8233A7831F1FE67E00A4D3C5 /* NetworkServices.swift in Sources */,
 				82E9C1801F1EA4B100A8D277 /* PullReqTableViewController.swift in Sources */,
 				82E9C16E1F1E85E700A8D277 /* AppDelegate.swift in Sources */,
 			);
