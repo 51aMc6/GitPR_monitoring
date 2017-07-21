@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HFK-Gv-ZPg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HFK-Gv-ZPg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,6 +42,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="3r5-Wl-dc8" kind="show" id="eMd-zt-UeY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -59,6 +63,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0J-GQ-UjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="575" y="105"/>
+        </scene>
+        <!--diff-->
+        <scene sceneID="6ZG-S7-ab1">
+            <objects>
+                <collectionViewController title="diff" id="3r5-Wl-dc8" customClass="DiffPReqCollectionViewController" customModule="GitPullRequestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ddy-ae-1Qo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90414923429489136" green="0.90648239850997925" blue="0.97077268362045288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="umv-u2-EH7">
+                            <size key="itemSize" width="150" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="xZa-PH-2iz" customClass="MyCollectionViewCell" customModule="GitPullRequestApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-kj-GaJ">
+                                            <rect key="frame" x="8" y="8" width="134" height="134"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="top" secondItem="xZa-PH-2iz" secondAttribute="topMargin" id="2Do-X5-QwV"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="centerX" secondItem="xZa-PH-2iz" secondAttribute="centerX" id="6YF-v2-58n"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="trailing" secondItem="xZa-PH-2iz" secondAttribute="trailingMargin" id="EmA-gK-l7b"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="centerY" secondItem="xZa-PH-2iz" secondAttribute="centerY" id="FTB-Kg-sww"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="bottom" secondItem="xZa-PH-2iz" secondAttribute="bottomMargin" id="JmA-Pl-bv5"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="leading" secondItem="xZa-PH-2iz" secondAttribute="leadingMargin" id="JnK-eg-YNo"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="lbl" destination="JsG-kj-GaJ" id="uKa-W4-0xo"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="3r5-Wl-dc8" id="HRN-IL-9ix"/>
+                            <outlet property="delegate" destination="3r5-Wl-dc8" id="K7B-SF-M48"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="collectionView" destination="ddy-ae-1Qo" id="1Dc-KI-bg6"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cO-43-bbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1431.2" y="95.802098950524751"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qOW-ky-br8">

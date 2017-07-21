@@ -8,10 +8,12 @@
 
 import UIKit
 
-class PullReqTableViewController: UITableViewController {
+var pullReqNum = 0
 
-    var pullReqData = [[String:AnyObject]]()
+class PullReqTableViewController: UITableViewController {
     
+    var pullReqData = [[String:AnyObject]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +22,6 @@ class PullReqTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,8 +78,9 @@ class PullReqTableViewController: UITableViewController {
     }
     
     // MARK: - Table view delegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("pressed")
+        pullReqNum = pullReqData[indexPath.row]["number"] as! Int
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -98,15 +100,17 @@ class PullReqTableViewController: UITableViewController {
     }
 
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toPullRequestDiff" {
+//            let vc = segue.destination as! DiffsPRViewController
+//            vc.pullReqNumber = "\(pullReqNum)"
+//        }
+//    }
+//    
     
     // MARK: - Date Formatter
     func dateFormatter(strDate : String)-> String {
