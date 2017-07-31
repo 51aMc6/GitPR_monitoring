@@ -175,14 +175,13 @@ class DiffPReqCollectionViewController: UICollectionViewController, UICollection
         let screenWidth : CGFloat = screenRect.size.width
         let cellWidth : CGFloat = (screenWidth / 2) - 0.5
         var cellHeight : CGFloat = 2000.0
-//        let padding : CGFloat = 3.0
         let size = CGSize(width: cellWidth, height: cellHeight)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14, weight: UIFontWeightLight)]
 //        let text = diffData[indexPath.section]["patch"] as! String
         let text = self.matchStringForDiff(with: diffData[indexPath.section], for: indexPath.row)
         let newSize = NSString(string: text).boundingRect(with: size, options: options, attributes: attributes, context: nil)
-        cellHeight = newSize.height //+ padding
+        cellHeight = newSize.height
 
         return CGSize(width: cellWidth, height: cellHeight)
     }
