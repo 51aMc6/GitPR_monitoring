@@ -8,12 +8,12 @@
 
 import UIKit
 
-var pullReqNum = 0
+var pullReqNum : Int = 0
 
 class PullReqTableViewController: UITableViewController {
     
     var pullReqData = [[String:AnyObject]]()
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,14 +73,18 @@ class PullReqTableViewController: UITableViewController {
         }
         cell.detailTextLabel?.text = "#\(prObj["number"]!) opened on \(myDate) by \(name)"
         
-        
         return cell
     }
     
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         pullReqNum = pullReqData[indexPath.row]["number"] as! Int
+        return indexPath
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -100,17 +104,23 @@ class PullReqTableViewController: UITableViewController {
     }
 
     
-//    
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toPullRequestDiff" {
-//            let vc = segue.destination as! DiffsPRViewController
-//            vc.pullReqNumber = "\(pullReqNum)"
-//        }
-//    }
-//    
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "diffOfPullReq" {
+            let uriStr = "/\(pullReqNum)!/files?diff=split"
+            NetworkServices.fetchGithubRepos(with: uriStr, callback: { payload in
+                diffData = payload
+                DispatchQueue.main.async {
+                    let vc = segue.destination as! DiffPReqCollectionViewController
+                    vc.collectionView?.reloadData()
+                }
+            })
+        }
+    }
+    
     
     // MARK: - Date Formatter
     func dateFormatter(strDate : String)-> String {

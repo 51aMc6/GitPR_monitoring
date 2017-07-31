@@ -6,7 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,18 +23,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T1o-lo-XjH" id="exL-Mh-BLS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" id="tct-RV-Evu">
-                                            <rect key="frame" x="15" y="22" width="32" height="20"/>
+                                            <rect key="frame" x="15" y="23" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i0V-FA-83m">
-                                            <rect key="frame" x="15" y="42" width="44" height="15"/>
+                                            <rect key="frame" x="15" y="42.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +43,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="3r5-Wl-dc8" kind="show" id="eMd-zt-UeY"/>
+                                    <segue destination="3r5-Wl-dc8" kind="show" identifier="diffOfPullReq" id="eMd-zt-UeY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -68,27 +68,27 @@
         <scene sceneID="6ZG-S7-ab1">
             <objects>
                 <collectionViewController title="diff" id="3r5-Wl-dc8" customClass="DiffPReqCollectionViewController" customModule="GitPullRequestApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ddy-ae-1Qo">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="ddy-ae-1Qo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90414923429489136" green="0.90648239850997925" blue="0.97077268362045288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="umv-u2-EH7">
-                            <size key="itemSize" width="150" height="150"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="umv-u2-EH7">
+                            <size key="itemSize" width="178" height="166"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="xZa-PH-2iz" customClass="MyCollectionViewCell" customModule="GitPullRequestApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="178" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="178" height="166"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-kj-GaJ">
-                                            <rect key="frame" x="8" y="8" width="134" height="134"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-kj-GaJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="178" height="118.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -96,12 +96,11 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="top" secondItem="xZa-PH-2iz" secondAttribute="topMargin" id="2Do-X5-QwV"/>
-                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="centerX" secondItem="xZa-PH-2iz" secondAttribute="centerX" id="6YF-v2-58n"/>
-                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="trailing" secondItem="xZa-PH-2iz" secondAttribute="trailingMargin" id="EmA-gK-l7b"/>
-                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="centerY" secondItem="xZa-PH-2iz" secondAttribute="centerY" id="FTB-Kg-sww"/>
-                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="bottom" secondItem="xZa-PH-2iz" secondAttribute="bottomMargin" id="JmA-Pl-bv5"/>
-                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="leading" secondItem="xZa-PH-2iz" secondAttribute="leadingMargin" id="JnK-eg-YNo"/>
+                                    <constraint firstAttribute="bottom" secondItem="JsG-kj-GaJ" secondAttribute="bottom" multiplier="1.4" priority="250" id="1uy-rQ-UZj"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="centerX" secondItem="xZa-PH-2iz" secondAttribute="centerX" id="7X9-gx-Mrk"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="leading" secondItem="xZa-PH-2iz" secondAttribute="leading" id="INA-ge-geO"/>
+                                    <constraint firstItem="JsG-kj-GaJ" firstAttribute="top" secondItem="xZa-PH-2iz" secondAttribute="top" id="Iiv-jf-4Nr"/>
+                                    <constraint firstAttribute="trailing" secondItem="JsG-kj-GaJ" secondAttribute="trailing" id="sOE-In-JEU"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="lbl" destination="JsG-kj-GaJ" id="uKa-W4-0xo"/>
@@ -113,6 +112,13 @@
                             <outlet property="delegate" destination="3r5-Wl-dc8" id="K7B-SF-M48"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="dv3-vr-6AD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="K54-oV-3Ib">
+                            <connections>
+                                <action selector="reloadDataButtonAction:" destination="3r5-Wl-dc8" id="5uE-5J-Fqh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ddy-ae-1Qo" id="1Dc-KI-bg6"/>
                     </connections>
